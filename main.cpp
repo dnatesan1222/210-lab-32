@@ -11,6 +11,7 @@ using namespace std;
 void displayQueue(deque<Car> &tQ);
 
 int main(){
+	srand(time(0));
 	deque<Car> tollQueue;
 	Car c1;
 	Car c2;
@@ -23,7 +24,7 @@ int main(){
 	int time = 1;
 	//start loop here for simulation
 	while (tollQueue.size() != 0){
-		cout << "Time: " << time << "  Operation: ";
+		cout << "Time: " << time << " Operation: ";
 		prob = rand() % 100 + 1;  	//returns random number 1-100 for probability functions
 		if (prob < 56){			//55% probability
 			cout << "Car paid: ";
@@ -40,7 +41,7 @@ int main(){
 		time += 1;
 	}
 	cout << endl;
-	return 0;
+	return 1;
 }
 
 void displayQueue(deque<Car> &tQ){
