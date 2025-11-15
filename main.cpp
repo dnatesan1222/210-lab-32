@@ -23,26 +23,32 @@ int main(){
 	int time = 1;
 	//start loop here for simulation
 	while (tollQueue.size() != 0){
-		cout << "Time: " << time << "  Operation: "
+		cout << "Time: " << time << "  Operation: ";
 		prob = rand() % 100 + 1;  	//returns random number 1-100 for probability functions
 		if (prob < 56){			//55% probability
-			Car temp = tollQueue.pop_front();
 			cout << "Car paid: ";
-			temp.print()
+			(tollQueue.front()).print();
+			tollQueue.pop_front();
 		}else{				//45% probability
-			Car temp;
-                        tollQueue.push_back(temp);
+                        Car temp;
+			tollQueue.push_back(temp);
                         cout << "Joined lane: ";
-                        temp.print();
+			temp.print();
 		}
-
+		cout << "Queue: " << endl;
+		displayQueue(tollQueue);
+		time += 1;
 	}
-	cout << "Queue:\n\tEmpty" << endl;
+	cout << endl;
 	return 0;
 }
 
 void displayQueue(deque<Car> &tQ){
 	//this will not output "Queue:" or "Initial queue:" that will happen before the function is called
+	if (tQ.size() == 0){
+		cout << "\tEmpty" << endl;
+		return;
+	}
 	for (int i = 0; i < tQ.size(); i++){
 		Car temp = tQ[i]; // Access the specific elements to orint them
 		cout << '\t';
