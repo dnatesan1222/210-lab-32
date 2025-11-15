@@ -4,9 +4,10 @@
 #include "Car.h"
 #include <deque>
 #include <iostream>
-#include <string>
 using namespace std;
 
+//displayQueue() take a deque and access all of its elements to neatly print the queue
+//arguments: deque<Car> &tQ so the funstion knows what deque it is displaying
 void displayQueue(deque<Car> &tQ);
 
 int main(){
@@ -17,6 +18,12 @@ int main(){
 	tollQueue.push_back(c2);
 	cout << "Initial queue:" << endl;
 	displayQueue(tollQueue);
+	//start loop here for simulation
+	while (tollQueue.size() != 0){
+	int prob = rand() % 100 + 1;  	//returns random number 1-100 for probability functions
+	}
+	
+
 
 }
 
