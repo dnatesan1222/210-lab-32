@@ -16,15 +16,20 @@ void displayQueue(deque<Car> &tQ);
 int main(){
 	srand(time(0));
 	array<deque<Car>, 4> plaza;
+	cout << "Empty lanes:\n";
 	for (int i = 0; i < 4; i++){
 		Car c1;
 		Car c2;
 		plaza[i].push_back(c1);
 		plaza[i].push_back(c2);
+		cout << "Lane " << (i+1) << " populated\n";
+		displayQueue(plaza);
 	}
-	//Milestone 2 tests
+	
 	cout << "Initial queues:" << endl;
 	displayQueue(plaza);
+
+	/*//Milestone 2 tests
 	cout << "Tests:\nFirst car in lane 1 queue: ";
 	plaza[0].front().print();
 	cout << "Last car in lane 4 queue: ";
@@ -35,7 +40,7 @@ int main(){
 	displayQueue(plaza[2]);
 	cout << "Adding Lane 3's first car back:" << endl;
 	plaza[2].push_front(temp);
-	displayQueue(plaza[2]);
+	displayQueue(plaza[2]);*/
 /*
 	int prob;
 	int time = 1;
