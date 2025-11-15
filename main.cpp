@@ -18,13 +18,27 @@ int main(){
 	tollQueue.push_back(c2);
 	cout << "Initial queue:" << endl;
 	displayQueue(tollQueue);
+
+	int prob;
+	int time = 1;
 	//start loop here for simulation
 	while (tollQueue.size() != 0){
-	int prob = rand() % 100 + 1;  	//returns random number 1-100 for probability functions
+		cout << "Time: " << time << "  Operation: "
+		prob = rand() % 100 + 1;  	//returns random number 1-100 for probability functions
+		if (prob < 56){			//55% probability
+			Car temp = tollQueue.pop_front();
+			cout << "Car paid: ";
+			temp.print()
+		}else{				//45% probability
+			Car temp;
+                        tollQueue.push_back(temp);
+                        cout << "Joined lane: ";
+                        temp.print();
+		}
+
 	}
-	
-
-
+	cout << "Queue:\n\tEmpty" << endl;
+	return 0;
 }
 
 void displayQueue(deque<Car> &tQ){
