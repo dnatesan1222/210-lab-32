@@ -25,7 +25,17 @@ int main(){
 	//Milestone 2 tests
 	cout << "Initial queues:" << endl;
 	displayQueue(plaza);
-	cout << "first car in lane 1 queue: " << plaza[0].front() << endl;
+	cout << "Tests:\nFirst car in lane 1 queue: ";
+	plaza[0].front().print();
+	cout << "Last car in lane 4 queue: ";
+        plaza[3].back().print();
+	cout << "Removing Lane 3's first car:" << endl;
+	Car temp = plaza[2].front();
+	plaza[2].pop_front();
+	displayQueue(plaza[2]);
+	cout << "Adding Lane 3's first car back:" << endl;
+	plaza[2].push_front(temp);
+	displayQueue(plaza[2]);
 /*
 	int prob;
 	int time = 1;
