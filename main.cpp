@@ -7,6 +7,8 @@
 #include <array>
 using namespace std;
 
+void displayQueue(array<deque<Car>, 4> &tQ);
+
 //displayQueue() take a deque and access all of its elements to neatly print the queue
 //arguments: deque<Car> &tQ so the funstion knows what deque it is displaying
 void displayQueue(deque<Car> &tQ);
@@ -20,11 +22,10 @@ int main(){
 		plaza[i].push_back(c1);
 		plaza[i].push_back(c2);
 	}
-	cout << "Initial queue:" << endl;
-	displayQueue(plaza[0]);
-	displayQueue(plaza[1]);
-	displayQueue(plaza[2]);
-	displayQueue(plaza[3]);
+	//Milestone 2 tests
+	cout << "Initial queues:" << endl;
+	displayQueue(plaza);
+	cout << "first car in lane 1 queue: " << plaza[0].front() << endl;
 /*
 	int prob;
 	int time = 1;
@@ -61,6 +62,17 @@ void displayQueue(deque<Car> &tQ){
 		cout << '\t';
 		temp.print();
 	}
-	cout << endl;
+}
+void displayQueue(array<deque<Car>, 4> &tQ){
+        //this will not output "Queue:" or "Initial queue:" that will happen before the function is called
+        if (tQ.size() == 0){
+                cout << "\tEmpty" << endl;
+                return;
+        }
+        for (int i = 0; i < 4; i++){
+		cout << "Lane " << (i+1) << " Queue:\n";
+		displayQueue(tQ[i]);
+        }
+        cout << endl;
 }
 
