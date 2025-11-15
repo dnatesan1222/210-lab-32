@@ -8,7 +8,9 @@
 using namespace std;
 
 int main(){
-	
+	deque<Car> tollQueue;
+	Car c();
+	c.print();
 
 
 
