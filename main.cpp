@@ -4,6 +4,7 @@
 #include "Car.h"
 #include <deque>
 #include <iostream>
+#include <array>
 using namespace std;
 
 //displayQueue() take a deque and access all of its elements to neatly print the queue
@@ -12,14 +13,19 @@ void displayQueue(deque<Car> &tQ);
 
 int main(){
 	srand(time(0));
-	deque<Car> tollQueue;
-	Car c1;
-	Car c2;
-	tollQueue.push_back(c1);
-	tollQueue.push_back(c2);
+	array<deque<Car>, 4> plaza;
+	for (int i = 0; i < 4; i++){
+		Car c1;
+		Car c2;
+		plaza[i].push_back(c1);
+		plaza[i].push_back(c2);
+	}
 	cout << "Initial queue:" << endl;
-	displayQueue(tollQueue);
-
+	displayQueue(plaza[0]);
+	displayQueue(plaza[1]);
+	displayQueue(plaza[2]);
+	displayQueue(plaza[3]);
+/*
 	int prob;
 	int time = 1;
 	//start loop here for simulation
@@ -31,9 +37,9 @@ int main(){
 			(tollQueue.front()).print();
 			tollQueue.pop_front();
 		}else{				//45% probability
-                        Car temp;
+			Car temp;
 			tollQueue.push_back(temp);
-                        cout << "Joined lane: ";
+			cout << "Joined lane: ";
 			temp.print();
 		}
 		cout << "Queue: " << endl;
@@ -41,7 +47,7 @@ int main(){
 		time += 1;
 	}
 	cout << endl;
-	return 1;
+*/	return 1;
 }
 
 void displayQueue(deque<Car> &tQ){
@@ -54,7 +60,7 @@ void displayQueue(deque<Car> &tQ){
 		Car temp = tQ[i]; // Access the specific elements to orint them
 		cout << '\t';
 		temp.print();
- 	}
+	}
 	cout << endl;
 }
 
