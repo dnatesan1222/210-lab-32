@@ -7,23 +7,27 @@
 #include <array>
 using namespace std;
 
+//displayQueue() takes an array of four deques and outputs the deque elements as lanes by calling the other displayQueue function
+//arguments: <deque<Car>, 4> &tQ so the function knows what deques it is displaying
 void displayQueue(array<deque<Car>, 4> &tQ);
 
-//displayQueue() take a deque and access all of its elements to neatly print the queue
-//arguments: deque<Car> &tQ so the funstion knows what deque it is displaying
+//displayQueue() takes an deque and access all of its elements to neatly print the queue
+//arguments: deque<Car> &tQ so the function knows what deque it is displaying
 void displayQueue(deque<Car> &tQ);
 
 int main(){
 	srand(time(0));
 	array<deque<Car>, 4> plaza;
-	cout << "Empty lanes:\n";
+	/*cout << "Empty lanes:\n";	//part of milestone 3 testing
+	displayQueue(plaza);*/
 	for (int i = 0; i < 4; i++){
 		Car c1;
 		Car c2;
 		plaza[i].push_back(c1);
 		plaza[i].push_back(c2);
+		/*//Milestone 3 tests
 		cout << "Lane " << (i+1) << " populated\n";
-		displayQueue(plaza);
+		displayQueue(plaza);*/
 	}
 	
 	cout << "Initial queues:" << endl;
