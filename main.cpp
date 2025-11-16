@@ -7,9 +7,10 @@
 #include <array>
 using namespace std;
 
-const int paid = 47;
-const int joined = 86;
-const int emptyProb = 51;
+const int PAID = 46;
+const int JOIN = 39;
+const int SWITCHED = 15;
+const int EMPTYPROB = 50;
 
 
 //displayQueue() takes an array of four deques and outputs the deque elements as lanes by calling the other displayQueue function
@@ -59,7 +60,7 @@ int main(){
 			cout << "Lane: " << (j+1);
 			prob = rand() % 100 + 1;  	//returns random number 1-100 for probability functions
 			if (plaza[j].size() == 0){
-				if (prob < emptyProb)			//50% probability
+				if (prob <= EMPTYPROB)			//50% probability
 					cout << " Lane is empty. No car joined." << endl;
 				else{				//50% probability
 					Car temp;
@@ -69,16 +70,16 @@ int main(){
 				}
 			}
 			else{
-				if (prob < paid){			//1-46 (46% probability)
+				if (prob <= PAID){			//1-46 (46% probability)
 					cout << " Paid: ";
                                         (plaza[j].front()).print();
                                          plaza[j].pop_front();
-				}else if (prob < joined){		//47-85 (39% probability)
+				}else if (prob <= (PAID+JOIN)){		//47-85 (39% probability)
 					Car temp;
                                         plaza[j].push_back(temp);
                                         cout << " Joined: ";
                                         temp.print();
-				}else{	//15% probability that the rear car will shift lanes (86-100)
+				}else if (prob <= (PAID+JOIN+SWITCHED)){	//15% probability that the rear car will shift lanes (86-100)
 					cout << " Switched: ";
 					plaza[j].back().print();
 					Car temp = plaza[j].back();
