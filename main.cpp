@@ -47,30 +47,30 @@ int main(){
 	  displayQueue(plaza[2]);*/
 
 	int prob;
-	int time = 1;
 	//start loop here for simulation
 	for (int i = 1; i < 21; i++){
-		cout << "Time: " << time << endl;
-		for (int j = 1; j < 5; j++){
-			cout << "Lane " << j;
+		cout << "Time: " << i << endl;
+		for (int j = 0; j < 4; j++){
+			cout << "Lane " << (j+1);
 			prob = rand() % 100 + 1;  	//returns random number 1-100 for probability functions
 			if (prob < 51){			//50% probability
-				cout << " Paid: ";
-				(plaza[i].front()).print();
-				plaza[i].pop_front();
-			}else{				//40% probability
+				if (plaza[j].size() != 0){
+					cout << " Paid: ";
+					(plaza[j].front()).print();
+					plaza[j].pop_front();
+				}
+				cout << " Lane is empty. No car joined or paid." << endl;
+			}else{				//50% probability
 				Car temp;
-				plaza[i].push_back(temp);
+				plaza[j].push_back(temp);
 				cout << " Joined: ";
 				temp.print();
 			}
-			cout << endl;
 		}
 		displayQueue(plaza);
-		time += 1;
 	}
 	cout << endl;
-	return 1;
+	return 0;
 }
 
 void displayQueue(deque<Car> &tQ){
