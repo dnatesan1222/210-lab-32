@@ -53,18 +53,34 @@ int main(){
 		for (int j = 0; j < 4; j++){
 			cout << "Lane " << (j+1);
 			prob = rand() % 100 + 1;  	//returns random number 1-100 for probability functions
-			if (prob < 51){			//50% probability
-				if (plaza[j].size() != 0){
-					cout << " Paid: ";
-					(plaza[j].front()).print();
-					plaza[j].pop_front();
+			if (plaza[j].size() == 0){
+				if (prob < 51){			//50% probability
+					if (plaza[j].size() != 0){
+						cout << " Paid: ";
+						(plaza[j].front()).print();
+						plaza[j].pop_front();
+					}
+					cout << " Lane is empty. No car joined or paid." << endl;
+				}else{				//50% probability
+					Car temp;
+					plaza[j].push_back(temp);
+					cout << " Joined: ";
+					temp.print();
 				}
-				cout << " Lane is empty. No car joined or paid." << endl;
-			}else{				//50% probability
-				Car temp;
-				plaza[j].push_back(temp);
-				cout << " Joined: ";
-				temp.print();
+			}
+			else{
+				if (prob < 47){			//1-46 (46% probability)
+					cout << " Paid: ";
+                                        (plaza[j].front()).print();
+                                         plaza[j].pop_front();
+				}else if (prob < 86){		//47-85 (39% probability)
+					Car temp;
+                                        plaza[j].push_back(temp);
+                                        cout << " Joined: ";
+                                        temp.print();
+				}else{
+					//15% probability that the rear car will shift lanes
+				}
 			}
 		}
 		displayQueue(plaza);
