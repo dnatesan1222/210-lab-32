@@ -56,17 +56,12 @@ int main(){
 	for (int i = 1; i < 21; i++){
 		cout << "Time: " << i << endl;
 		for (int j = 0; j < 4; j++){
-			cout << "Lane " << (j+1);
+			cout << "Lane: " << (j+1);
 			prob = rand() % 100 + 1;  	//returns random number 1-100 for probability functions
 			if (plaza[j].size() == 0){
-				if (prob < emptyProb){			//50% probability
-					if (plaza[j].size() != 0){
-						cout << " Paid: ";
-						(plaza[j].front()).print();
-						plaza[j].pop_front();
-					}
+				if (prob < emptyProb)			//50% probability
 					cout << " Lane is empty. No car joined." << endl;
-				}else{				//50% probability
+				else{				//50% probability
 					Car temp;
 					plaza[j].push_back(temp);
 					cout << " Joined: ";
