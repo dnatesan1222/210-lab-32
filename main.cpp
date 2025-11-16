@@ -60,7 +60,7 @@ int main(){
 						(plaza[j].front()).print();
 						plaza[j].pop_front();
 					}
-					cout << " Lane is empty. No car joined or paid." << endl;
+					cout << " Lane is empty. No car joined." << endl;
 				}else{				//50% probability
 					Car temp;
 					plaza[j].push_back(temp);
@@ -78,8 +78,15 @@ int main(){
                                         plaza[j].push_back(temp);
                                         cout << " Joined: ";
                                         temp.print();
-				}else{
-					//15% probability that the rear car will shift lanes
+				}else{	//15% probability that the rear car will shift lanes
+					cout << " Switched: ";
+					plaza[j].back().print();
+					Car temp = plaza[j].back();
+					plaza[j].pop_back();
+					int newLane = rand() % 3;	//random number 0-2
+					if (newLane >= j)		//ensure the car isn't place back in the original lane
+						newLane += 1;
+					plaza[newLane].push_back(temp);
 				}
 			}
 		}
